@@ -1,5 +1,5 @@
 /*
-Package quickconnect implements the QuickConnect protocol for
+Package qcon implements the QuickConnect protocol for
 accessing Synology NAS devices over the best available connection
 using a globally unique identifier. The returned URLs will vary
 depending on the client network relative to the Synology - for
@@ -15,7 +15,7 @@ URLs:
 	ctx := context.Background()
 
 	// Fetch list of URLs
-	urls, err := quickconnect.Resolve(ctx, id)
+	urls, err := qcon.Resolve(ctx, id)
 
 	// Provided no error returned, the first URL in the returned slice
 	// will be the most desired available connection. This can then
@@ -25,4 +25,4 @@ More control can be obtained by creating a Client with custom
 settings (including modifying the default http.Client).
 
 */
-package quickconnect
+package qcon

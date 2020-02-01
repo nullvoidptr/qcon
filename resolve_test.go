@@ -1,10 +1,9 @@
-package quickconnect
+package qcon
 
 import (
 	"context"
 	"crypto/tls"
 	"flag"
-	"fmt"
 	"net/http"
 	"testing"
 	"time"
@@ -109,14 +108,16 @@ func Test1(t *testing.T) {
 
 	var urls []string
 
-	for _, typ := range httpsTypes {
-		for _, u := range getURLs(s[0], typ) {
-			urls = append(urls, u)
-		}
-	}
+	for t := uint8(0); t < maxRecordType; t++ {
+		var i serverInfo
 
-	for _, typ := range httpTypes {
-		for _, u := range getURLs(s[1], typ) {
+		if isHTTPS(t) {
+			i = s[0]
+		} else {
+			i = s[1]
+		}
+
+		for _, u := range getURLs(i, t) {
 			urls = append(urls, u)
 		}
 	}

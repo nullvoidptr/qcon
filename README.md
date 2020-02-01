@@ -1,6 +1,6 @@
-# quickconnect #
+# qcon #
 
-quickconnect is a Go library implementing the Synology QuickConnect protocol.
+`qcon` is a Go library implementing the Synology QuickConnect protocol.
 
 ## What is QuickConnect? ##
 
@@ -32,7 +32,7 @@ Most use cases can be handled by the `Resolve()` function:
 ```go
 import (
     "context"
-    qc "github.com/jamesbo13/quickconnect"
+    "github.com/jamesbo13/qcon"
 )
 
 ...
@@ -43,7 +43,7 @@ id := "your-quick-connect-id"
 // Resolve will return list of all working routes to device
 // expressed as URL strings. The most preferred route will
 // be listed first.
-urls, err := qc.Resolve(ctx, id)
+urls, err := qcon.Resolve(ctx, id)
 if err != nil {
     // handle error
 }
@@ -62,7 +62,7 @@ import (
     "context"
     "crypto/tls"
     "net/http"
-    qc "github.com/jamesbo13/quickconnect"
+    "github.com/jamesbo13/qcon"
 )
 
 ...
@@ -82,7 +82,7 @@ tr := &http.Transport{
     },                                          // useful when connecting to IP addresses rather than hostnames
 }
 
-c := &qc.Client{
+c := &qcon.Client{
     Client: &http.Client{
         Timeout: 10 * time.Second,  // Timeout for HTTP responses from server
         Transport: tr,
@@ -116,5 +116,6 @@ This can be used to cancel any calls to the library from another goroutine.
 See the original [Go blog post on context](https://blog.golang.org/context)
 for more details.
 
-## License
+## License ##
+
 [MIT](https://choosealicense.com/licenses/mit/)

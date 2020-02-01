@@ -1,4 +1,4 @@
-package quickconnect
+package qcon
 
 import (
 	"encoding/json"

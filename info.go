@@ -1,9 +1,41 @@
-package quickconnect
+package qcon
 
 import (
 	"net"
 	"sort"
 )
+
+// TODO: change const to allow bitmap operations
+// pass to GetInfo() as a filter for only returning certain types
+
+// List of all host/address types ordered by priority
+// Lowest values are most preferred
+const (
+	httpsSmartLanIPv4 uint8 = iota
+	httpsSmartLanIPv6
+	httpsLanIPv4
+	httpsLanIPv6
+	httpsFQDN
+	httpsDDNS
+	httpsSmartHost
+	httpsSmartWanIPv6
+	httpsSmartWanIPv4
+	httpsWanIPv6
+	httpsWanIPv4
+	httpLanIPv4
+	httpLanIPv6
+	httpFQDN
+	httpDDNS
+	httpWanIPv6
+	httpWanIPv4
+	httpsTun
+	httpTun
+	maxRecordType
+)
+
+func isHTTPS(t uint8) bool {
+	return t < httpLanIPv4 || t == httpsTun
+}
 
 // Record is a single QuickConnect redirect record indicating a
 // URL that may be able to access the desired Synology service.
@@ -26,7 +58,7 @@ const (
 	StateInvalidServer
 )
 
-// Info contains information on a QuickConnect host
+// Info contains information about a QuickConnect host
 type Info struct {
 	ServerID string
 	Records  []Record
