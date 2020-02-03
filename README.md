@@ -1,5 +1,8 @@
 # qcon #
 
+[![Documentation](https://godoc.org/github.com/jamesbo13/qcon?status.svg)](http://godoc.org/github.com/jamesbo13/qcon)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jamesbo13/qcon)](https://goreportcard.com/report/github.com/jamesbo13/qcon)
+
 `qcon` is a Go library implementing the Synology QuickConnect protocol.
 
 ## What is QuickConnect? ##
