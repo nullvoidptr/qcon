@@ -1,3 +1,3 @@
-module github.com/jamesbo13/qcon
+module jbowen.dev/qcon
 
 go 1.13
